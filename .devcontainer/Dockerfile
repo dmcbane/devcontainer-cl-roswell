@@ -1,7 +1,7 @@
 FROM debian:12
 # RUN echo 'export PATH=$HOME/.roswell/bin:$PATH' >> ~/.bashrc
 # Set the locale
-RUN apt update && apt-get install curl make bzip2 libcurl4-gnutls-dev locales git -y
+RUN apt update && apt-get install curl make bzip2 libcurl4-gnutls-dev locales git vim rlwrap -y
 RUN sed --in-place '/en_US.UTF-8/s/^#//' /etc/locale.gen
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
@@ -12,3 +12,4 @@ RUN curl -L -O https://github.com/roswell/roswell/releases/download/v${ROSWELL_V
     dpkg -i *.deb && ros && rm *.deb
 
 ENV PATH="/root/.roswell/bin:${PATH}"
+RUN echo "alias ros='/usr/bin/rlwrap /usr/bin/ros'" >> ~/.bashrc
