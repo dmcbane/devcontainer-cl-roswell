@@ -1,2 +1,2 @@
 # devcontainer-cl-roswell
-A Go devcontainer that runs as a specific user
+A Common Lisp devcontainer that runs as a specific user
